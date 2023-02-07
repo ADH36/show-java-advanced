@@ -1,0 +1,12 @@
+deviceId=YourDeviceId
+admobPublisherId=pub-6353875969990470
+adUnitId=ca-app-pub-6353875969990470/3418687442
+admobAppId=ca-app-pub-6353875969990470~1288715104
+IapProductId=pro_app
+googlePlayLicenseKey=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjax/9IlVl2T986I37Z6mjLkwKywyy0IIuVNejF8bLeTNv+wcDpHW5I5LDcKG7yyvU8xmTthglVa9hMKXSCju3zOgfnhGurj4hC9PKek8ngR/1tFYKA+xoFhu8CMV0xGd8ZxJYqu0Z/B++xZ7aOSGgA+EdVTXSP/VmK5tg1yML0ConKE6ESVYvtD6veF09ZxsbHbduDsyiUQUk9+vCH7hZeIz4+2pgdrJyAaq8GTbTcfuON+r/b5R5Z22kxGLFNd1EfAN12D7uNX9QUJnWNy4Ebt3Q4Lb6KH/8NBW/cqK8i22d//UgFHCM/xOamRqyqxPeNF6k2Te8gHjBtkdM3k33wIDAQAB
+backendUrl=https://coltesports.com/
+purchaseVerifierPath=check/buy
+privacyPolicyUrl=https://coltesports.com/privacy-policy/
+minifyEnabled=true
+shrinkResources=true
+crashlyticsApiKey=$CRASHLYTICS_API_KEY

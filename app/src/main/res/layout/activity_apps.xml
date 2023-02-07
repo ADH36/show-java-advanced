@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.apps.AppsActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_toolbar" />
+
+    <include
+        android:id="@+id/adView"
+        layout="@layout/layout_admob" />
+
+    <LinearLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="4dp"
+            android:ellipsize="end"
+            android:text="@string/loadingApplications"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/grey_700" />
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:id="@+id/progressBar"
+            style="@style/NumberProgressBar_Default"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/secondaryStatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/grey_700"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/typeRadioGroup"
+        android:layout_width="200dp"
+        android:layout_below="@id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="3dp"
+        android:visibility="visible"
+        android:orientation="horizontal"
+        android:layout_marginStart="3dp">
+
+        <RadioButton
+            android:id="@+id/userRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/user" />
+
+        <RadioButton
+            android:id="@+id/systemRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"
+            android:text="@string/system" />
+
+
+        <RadioButton
+            android:id="@+id/allRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"
+            android:text="@string/all" />
+    </RadioGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/appsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/adView"
+        android:layout_below="@id/typeRadioGroup"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

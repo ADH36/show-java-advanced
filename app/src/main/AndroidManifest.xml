@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    package="com.argonaut.showjava">
+
+    <permission
+        android:name="com.argonaut.showjava.permission.CANCEL_WORKER"
+        android:protectionLevel="normal" />
+    <permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+        </intent>
+    </queries>
+
+    <uses-permission android:name="com.njlabs.showjava.permission.CANCEL_WORKER" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.Ad_ID" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" tools:node="remove"/>
+
+
+
+
+
+    <application
+        android:name="com.argonaut.showjava.MainApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/appName"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning"
+        android:requestLegacyExternalStorage="true"
+        tools:replace="android:label,android:supportsRtl">
+        <meta-data android:name="com.startapp.sdk.APPLICATION_ID" android:value="203756983" />
+
+
+
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="${crashlyticsApiKey}" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${admobAppId}" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+
+        <receiver
+            android:name="com.argonaut.showjava.receivers.DecompilerActionReceiver"
+            android:permission="com.njlabs.showjava.permission.CANCEL_WORKER" />
+
+        <activity
+            android:name="com.argonaut.showjava.activities.landing.LandingActivity"
+            android:label="@string/appName"
+            android:theme="@style/AppTheme.WithDrawer"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.argonaut.showjava.activities.apps.AppsActivity"
+            android:label="@string/appName"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.WithTransition"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
+        <activity
+            android:name="com.argonaut.showjava.activities.decompiler.DecompilerProcessActivity"
+            android:theme="@style/AppTheme.WithTransition">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.argonaut.showjava.activities.apps.AppsActivity" />
+        </activity>
+
+        <activity
+            android:name="com.argonaut.showjava.activities.decompiler.LowMemoryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.argonaut.showjava.activities.apps.AppsActivity" />
+        </activity>
+
+        <activity
+            android:name="com.argonaut.showjava.activities.explorer.viewer.CodeViewerActivity"
+            android:theme="@style/SourceViewerTheme" />
+
+        <activity android:name="com.argonaut.showjava.activities.explorer.navigator.NavigatorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.argonaut.showjava.activities.landing.LandingActivity" />
+        </activity>
+
+        <activity
+            android:name="com.argonaut.showjava.activities.explorer.viewer.ImageViewerActivity"
+            android:theme="@style/SourceViewerTheme" />
+
+        <activity android:name="com.argonaut.showjava.activities.about.AboutActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.argonaut.showjava.activities.landing.LandingActivity" />
+        </activity>
+
+        <activity android:name="com.argonaut.showjava.activities.purchase.PurchaseActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.argonaut.showjava.activities.landing.LandingActivity" />
+        </activity>
+
+        <activity android:name="com.argonaut.showjava.activities.settings.SettingsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.argonaut.showjava.activities.landing.LandingActivity" />
+        </activity>
+
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.argonaut.showjava.activities.about.AboutActivity" />
+        </activity>
+
+
+        <activity
+            android:name="com.argonaut.showjava.activities.decompiler.DecompilerActivity"
+            android:label="@string/appName"
+            android:theme="@style/AppTheme.WithTransition"
+            android:exported="true"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.argonaut.showjava.activities.apps.AppsActivity" />
+
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_round"
+                android:label="@string/appName"
+                android:priority="10">
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="application/vnd.android.package-archive" />
+            </intent-filter>
+
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_round"
+                android:label="@string/appName"
+                android:priority="20">
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:mimeType="application/java-archive" />
+            </intent-filter>
+
+            <!--
+                 Capture file open requests (pathPattern is honoured) where no
+                 MIME type is provided in the Intent.  An Intent with a null
+                 MIME type will never be matched by a filter with a set MIME
+                 type, so we need a second intent-filter if we wish to also
+                 match files with this extension and a non-null MIME type
+                 (even if it is non-null but zero length).
+            -->
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_round"
+                android:label="@string/appName"
+                android:priority="30">
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:host="*" />
+
+                <!--
+                     Work around Android's ugly primitive PatternMatcher
+                     implementation that can't cope with finding a . early in
+                     the path unless it's explicitly matched.
+                -->
+                <data android:pathPattern=".*\\.jar" />
+                <data android:pathPattern=".*\\..*\\.jar" />
+                <data android:pathPattern=".*\\..*\\..*\\.jar" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.jar" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.jar" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.jar" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.jar" />
+                <data android:pathPattern=".*\\.dex" />
+                <data android:pathPattern=".*\\..*\\.dex" />
+                <data android:pathPattern=".*\\..*\\..*\\.dex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.dex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.dex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.dex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.dex" />
+                <data android:pathPattern=".*\\.odex" />
+                <data android:pathPattern=".*\\..*\\.odex" />
+                <data android:pathPattern=".*\\..*\\..*\\.odex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.odex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.odex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.odex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.odex" />
+            </intent-filter>
+
+            <!--
+                 Capture file open requests (pathPattern is honoured) where a
+                 (possibly blank) MIME type is provided in the Intent.  This
+                 filter may only be necessary for supporting ES File Explorer,
+                 which has the probably buggy behaviour of using an Intent
+                 with a MIME type that is set but zero-length.  It's
+                 impossible to match such a type except by using a global
+                 wildcard.
+            -->
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_round"
+                android:label="@string/appName"
+                android:priority="40">
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:mimeType="*/*" />
+
+                <!--
+                     Work around Android's ugly primitive PatternMatcher
+                     implementation that can't cope with finding a . early in
+                     the path unless it's explicitly matched.
+                -->
+                <data android:pathPattern=".*\\.jar" />
+                <data android:pathPattern=".*\\..*\\.jar" />
+                <data android:pathPattern=".*\\..*\\..*\\.jar" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.jar" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.jar" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.jar" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.jar" />
+                <data android:pathPattern=".*\\.dex" />
+                <data android:pathPattern=".*\\..*\\.dex" />
+                <data android:pathPattern=".*\\..*\\..*\\.dex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.dex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.dex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.dex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.dex" />
+                <data android:pathPattern=".*\\.odex" />
+                <data android:pathPattern=".*\\..*\\.odex" />
+                <data android:pathPattern=".*\\..*\\..*\\.odex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.odex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.odex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.odex" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.odex" />
+            </intent-filter>
+
+        </activity>
+
+    </application>
+
+</manifest>
